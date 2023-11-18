@@ -3,14 +3,19 @@ using System;
 using System.Drawing;
 using System.IO;
 
-namespace ResourcePacks
+namespace ResourcePacks.Packs
 {
     public class ResourcePack : IDisposable
     {
-        public string Name { get; private set; }
-        public TextureSet Terrain { get; private set; }
-
         public static ResourcePack Default { get; private set; }
+
+        public string Name { get; private set; }
+
+        public string Author { get; private set; } = "Unknown";
+
+        public string Description { get; private set; } = "N/A";
+
+        public TextureSet Terrain { get; private set; }
 
         public bool Disposed { get; private set; }
 

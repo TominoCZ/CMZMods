@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourcePacks", "ResourcePacks\ResourcePacks.csproj", "{EA39B326-45E9-48A7-96FF-A36A8B2EFADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMod", "ExampleMod\ExampleMod.csproj", "{CEEA746E-090E-44CA-B185-3323F22DAE71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroSkip", "ExampleMod\IntroSkip.csproj", "{CEEA746E-090E-44CA-B185-3323F22DAE71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

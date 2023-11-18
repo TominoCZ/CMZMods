@@ -19,7 +19,7 @@ namespace ResourcePacks
 {
     public static class Extensions
     {
-        public static T Get<T>(this FieldInfo field, object obj)
+        public static T GetValue<T>(this FieldInfo field, object obj)
         {
             return (T)field.GetValue(obj);
         }
