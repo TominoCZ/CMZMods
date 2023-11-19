@@ -5,13 +5,13 @@ using Modding;
 using ResourcePacks.Gui;
 using System.Collections.Generic;
 
-namespace ResourcePacks.Packs
+namespace ResourcePacks.Gui
 {
     class MyGuiHandler : GuiHandler
     {
         Queue<OptionsScreen> _queue = new Queue<OptionsScreen>();
 
-        protected override void OnCreated(Screen screen)
+        protected override void OnCreate(Screen screen)
         {
             if (screen is OptionsScreen os)
             {
@@ -19,7 +19,7 @@ namespace ResourcePacks.Packs
             }
         }
 
-        protected override void OnShown(Screen screen)
+        protected override void OnPush(Screen screen)
         {
             if (screen is OptionsScreen)
             {

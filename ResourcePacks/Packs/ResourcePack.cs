@@ -1,4 +1,5 @@
-﻿using Modding;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Modding;
 using System;
 using System.Drawing;
 using System.IO;
@@ -63,7 +64,7 @@ namespace ResourcePacks.Packs
             using (var diffuse = LoadTexture(dirTex, "diffuse"))
             using (var normal = LoadTexture(dirTex, "normal"))
             using (var metal = LoadTexture(dirTex, "metal"))
-                terrain = TextureSet.Create(diffuse?.ToTexture(ModBase.Instance.Game.GraphicsDevice), normal?.ToTexture(ModBase.Instance.Game.GraphicsDevice), metal?.ToTexture(ModBase.Instance.Game.GraphicsDevice));
+                terrain = TextureSet.Create(diffuse, normal, metal);//diffuse?.ToTexture(ModBase.Instance.Game.GraphicsDevice), normal?.ToTexture(ModBase.Instance.Game.GraphicsDevice), metal?.ToTexture(ModBase.Instance.Game.GraphicsDevice));
 
             pack = new ResourcePack(name, terrain);
 
@@ -78,8 +79,6 @@ namespace ResourcePacks.Packs
                 return;
 
             Disposed = true;
-
-            Terrain.Dispose();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace IntroSkip
 {
     class MyHandler : GuiHandler
     {
-        protected override void OnShown(Screen screen)
+        protected override void OnPush(Screen screen)
         {
             if (screen is LoadScreen loading)
             {

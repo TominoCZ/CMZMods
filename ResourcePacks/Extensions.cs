@@ -1,4 +1,6 @@
 ﻿using DNA.Collections;
+using DNA.Data.Units;
+using DNA.Drawing;
 using FastBitmapLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,7 +36,7 @@ namespace ResourcePacks
             return System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
         }
 
-        public static bool IsPowerOfTwo(this int x)
+        public static bool IsPoT(this int x)
         {
             return (x != 0) && ((x & (x - 1)) == 0);
         }
@@ -48,13 +50,13 @@ namespace ResourcePacks
                 data[index + 2] = num;
             }
         }
-
-        private static Byte4[] MakeMipmap(this Byte4[] source, int width, int height, bool normalize, int axisTiles = 8)
+        /*
+        public static Byte4[] MakeMipmap(Byte4[] source, int width, int height, bool normalize, int axisTiles = 8)
         {
             if (width <= 1 || height <= 1)
                 return null;
 
-            Byte4[] result = new Byte4[width * height / 4];
+            var result = new Byte4[width * height / 4];
             var offsets = new[] { 0, 1, width, width + 1 };
             var sizeTile = width / (double)axisTiles;
             var sizeRow = sizeTile * sizeTile * axisTiles;
@@ -148,7 +150,7 @@ namespace ResourcePacks
             var colors = new Color[w * h];
             tex.GetData(level, new Rectangle(0, 0, w, h), colors, 0, colors.Length);
             return colors.ToBitmap(w, h);
-        }
+        }*/
 
         public static Bitmap ToBitmap(this Color[] data, int w, int h)
         {
@@ -184,6 +186,37 @@ namespace ResourcePacks
             return tex;
         }
 
+        public static Byte4[] ToByte4Array(this Bitmap bitmap)
+        {
+            var format = bitmap.PixelFormat;
+            if (format != PixelFormat.Format32bppArgb && format != PixelFormat.Format32bppRgb)
+                throw new FormatException("Map has wrong format (" + bitmap.PixelFormat.ToString() + ") must be 32 bit ARGB");
+
+            var width = bitmap.Width;
+            var height = bitmap.Height;
+            var bmpData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            var raw = new byte[bmpData.Stride * bmpData.Height];
+            Marshal.Copy(bmpData.Scan0, raw, 0, raw.Length);
+            bitmap.UnlockBits(bmpData);
+            if (format == PixelFormat.Format32bppRgb)
+            {
+                for (int i = 3; i < raw.Length; i += 4)
+                {
+                    raw[i] = byte.MaxValue;
+                }
+            }
+
+            SwapChannels(raw);
+
+            var data = new Byte4[width * height];
+            data.AsUintArray(delegate (uint[] value)
+            {
+                Buffer.BlockCopy(raw, 0, value, 0, raw.Length);
+            });
+            return data;
+        }
+
+        /*
         public static Texture2D CreateMipmap(this Bitmap bitmap, GraphicsDevice gd, bool normalize = false)
         {
             var format = bitmap.PixelFormat;
@@ -205,7 +238,7 @@ namespace ResourcePacks
             }
 
             SwapChannels(raw);
-            var mipMap = IsPowerOfTwo(width) && IsPowerOfTwo(height);
+            var mipMap = IsPoT(width) && IsPoT(height);
             var result = new Texture2D(gd, width, height, mipMap, SurfaceFormat.Color);
             if (mipMap)
             {
@@ -229,7 +262,7 @@ namespace ResourcePacks
                         Console.WriteLine(e);
                     }
 
-                    data = data.MakeMipmap(w, h, normalize);
+                    data = MakeMipmap(data, w, h, normalize);
 
                     w >>= 1;
                     h >>= 1;
@@ -245,23 +278,56 @@ namespace ResourcePacks
             }
 
             return result;
+        }*/
+
+        public static Byte4[] GetResized(this TextureWrap src, GraphicsDevice _, int w, int h)
+        {
+            using (var device = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, GraphicsProfile.Reach, new PresentationParameters()))
+            {
+                using (var target = new RenderTarget2D(device, w, h, false, SurfaceFormat.Color, DepthFormat.None))
+                {
+                    var old = device.GetRenderTargets();
+                    device.SetRenderTarget(target);
+                    using (var batch = new SpriteBatch(device))
+                    {
+                        using (var tex = new Texture2D(device, src.Width, src.Height))
+                        {
+                            tex.SetData(src.GetData());
+
+                            batch.Begin();
+                            batch.Draw(tex, Vector2.Zero, Color.Transparent);//, new Rectangle(0, 0, tex.Width, tex.Height), Color.Transparent);
+                            batch.End();
+
+                            //gd.SetRenderTarget(null);
+
+                            var data = new Byte4[w * h];
+
+                            target.GetData(data);
+
+                            device.SetRenderTargets(old);
+
+                            return data;
+                        }
+                    }
+                }
+            }
         }
 
-        public static Bitmap GetResized(this System.Drawing.Image image, int width, int height)
+        public static Bitmap GetResized(this System.Drawing.Image image, int width, int height, bool smooth = false)
         {
             if (image.Width == width && image.Height == height)
-                return (Bitmap)image.Clone();
+                return (Bitmap)image;
 
             var rect = new System.Drawing.Rectangle(0, 0, width, height);
             var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             bitmap.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-            using (Graphics graphics = System.Drawing.Graphics.FromImage(bitmap))
+            using (Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.CompositingMode = CompositingMode.SourceCopy;
                 graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                graphics.InterpolationMode = smooth ? InterpolationMode.HighQualityBicubic : InterpolationMode.NearestNeighbor;
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.Half;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
                 using (var attr = new ImageAttributes())
                 {

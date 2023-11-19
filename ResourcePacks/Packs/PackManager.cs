@@ -17,11 +17,16 @@ namespace ResourcePacks.Packs
     {
         public static string Folder = "./@resourcepacks";
 
-        private FieldInfo _diffuse;
-        private FieldInfo _normal;
-        private FieldInfo _metal;
-        private FieldInfo _normalMip;
-        private FieldInfo _diffuseMip;
+        //private FieldInfo _diffuse;
+        //private FieldInfo _normal;
+        //private FieldInfo _metal;
+        //private FieldInfo _normalMip;
+        //private FieldInfo _diffuseMip;
+        private Texture2D _diffuse;
+        private Texture2D _normal;
+        private Texture2D _metal;
+        private Texture2D _normalMip;
+        private Texture2D _diffuseMip;
         private BlockTerrain _terrain;
 
         public CastleMinerZGame Game;
@@ -39,18 +44,19 @@ namespace ResourcePacks.Packs
         {
             _terrain = Game._terrain;
 
-            _diffuse = _terrain.GetType().GetField("_diffuseAlpha");
-            _normal = _terrain.GetType().GetField("_normalSpec");
-            _metal = _terrain.GetType().GetField("_metalLight");
-            _normalMip = _terrain.GetType().GetField("_mipMapNormals");
-            _diffuseMip = _terrain.GetType().GetField("_mipMapDiffuse");
+            _diffuse = _terrain.GetValue<Texture2D>("_diffuseAlpha");
+            _normal = _terrain.GetValue<Texture2D>("_normalSpec");
+            _metal = _terrain.GetValue<Texture2D>("_metalLight");
+            _diffuseMip = _terrain.GetValue<Texture2D>("_mipMapDiffuse");
+            _normalMip = _terrain.GetValue<Texture2D>("_mipMapNormals");
 
-            Packs.Add("Default", new ResourcePack("Default", new TextureSet(
-                    _diffuse.GetValue<Texture2D>(_terrain),
-                    _normal.GetValue<Texture2D>(_terrain),
-                    _metal.GetValue<Texture2D>(_terrain),
-                    _diffuseMip.GetValue<Texture2D>(_terrain),
-                    _normalMip.GetValue<Texture2D>(_terrain))));
+            Packs.Add("Default", new ResourcePack("Default", new TextureSet(_diffuse, _normal, _metal, _diffuseMip, _normalMip)));
+            /*
+            _diffuse.GetValue<Texture2D>(_terrain),
+            _normal.GetValue<Texture2D>(_terrain),
+            _metal.GetValue<Texture2D>(_terrain),
+            _diffuseMip.GetValue<Texture2D>(_terrain),
+            _normalMip.GetValue<Texture2D>(_terrain))));*/
 
             try
             {
@@ -109,21 +115,28 @@ namespace ResourcePacks.Packs
             if (!IsLoaded || pack.Disposed)
                 return false;
 
+            pack.Terrain.Diffuse.ApplyTo(_diffuse);
+            pack.Terrain.Normal.ApplyTo(_normal);
+            pack.Terrain.Metal.ApplyTo(_metal);
+            pack.Terrain.DiffuseMip.ApplyTo(_diffuseMip);
+            pack.Terrain.NormalMip.ApplyTo(_normalMip);
+
+            /*
             _diffuse.SetValue(_terrain, pack.Terrain.Diffuse);
             _normal.SetValue(_terrain, pack.Terrain.Normal);
             _metal.SetValue(_terrain, pack.Terrain.Metal);
             _normalMip.SetValue(_terrain, pack.Terrain.NormalMip);
-            _diffuseMip.SetValue(_terrain, pack.Terrain.DiffuseMip);
-
-            _terrain._effect.Parameters["DiffuseAlphaTexture"].SetValue(pack.Terrain.Diffuse);
-            _terrain._effect.Parameters["NormalSpecTexture"].SetValue(pack.Terrain.Normal);
-            _terrain._effect.Parameters["MetalLightTexture"].SetValue(pack.Terrain.Metal);
-            _terrain._effect.Parameters["MipMapSpecularTexture"].SetValue(pack.Terrain.NormalMip);
-            _terrain._effect.Parameters["MipMapDiffuseTexture"].SetValue(pack.Terrain.DiffuseMip);
+            _diffuseMip.SetValue(_terrain, pack.Terrain.DiffuseMip);*/
+            
+            _terrain._effect.Parameters["DiffuseAlphaTexture"].SetValue(_diffuse);
+            _terrain._effect.Parameters["NormalSpecTexture"].SetValue(_normal);
+            _terrain._effect.Parameters["MetalLightTexture"].SetValue(_metal);
+            _terrain._effect.Parameters["MipMapDiffuseTexture"].SetValue(_diffuseMip);
+            _terrain._effect.Parameters["MipMapSpecularTexture"].SetValue(_normalMip);
 
             //Terrain.UseSimpleShader = name != "Default";
 
-            ModBase.Instance.Log($"\"{pack.Name}\" Loaded", LogType.Success);
+            ModBase.Instance.Log($"\"{pack.Name}\" Loaded");
 
             return true;
         }
