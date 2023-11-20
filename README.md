@@ -11,8 +11,4 @@ I've included some example mods I made.
 - To install the Resource Pack mod, copy __both__ ``ResourcePacks.dll`` and ``FastBitmapLib.dll`` into the ``@mods`` folder.
 - To install resource packs, create a ``@resourcepacks`` folder (it creates itself) in the game's directory and paste in the example packs from ``@PACKS``.
 
-<<<<<<< HEAD
-You can switch between packs by pressing DELETE while playing.
-=======
-At the moment you can switch between packs by pressing DELETE while playing but there is also a **Texture Packs** tab in Options.
->>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
+At the moment you can switch between packs by pressing DELETE while playing but there is also a **Resource Packs** tab in Options.
