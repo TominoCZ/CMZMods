@@ -37,11 +37,7 @@ namespace ResourcePacks.Packs
 
         public void Init()
         {
-<<<<<<< HEAD
-            _terrain = ModBase.Instance.Game._terrain;
-=======
             _terrain = PackMod.Instance.Game._terrain;
->>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
 
             _diffuse = _terrain.GetValue<Texture2D>("_diffuseAlpha");
             _normal = _terrain.GetValue<Texture2D>("_normalSpec");

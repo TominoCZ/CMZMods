@@ -47,26 +47,6 @@
       <HintPath>..\lib\DNA.Steam.dll</HintPath>
       <Private>False</Private>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Microsoft.Xna.Framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Microsoft.Xna.Framework.Game.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Microsoft.Xna.Framework.Graphics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Microsoft.Xna.Framework.Xact.dll</HintPath>
-=======
     <Reference Include="Microsoft.Xna.Framework">
       <HintPath>..\lib\Microsoft.Xna.Framework.dll</HintPath>
       <Private>False</Private>
@@ -81,7 +61,6 @@
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Xact">
       <HintPath>..\lib\Microsoft.Xna.Framework.Xact.dll</HintPath>
->>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
       <Private>False</Private>
     </Reference>
     <Reference Include="Modding">

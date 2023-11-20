@@ -28,17 +28,11 @@ namespace NerfMod
 
     public class NerfMod : ModBase
     {
-<<<<<<< HEAD
-        public NerfMod(CastleMinerZGame game) : base(game, "ZombieNerf", "com.Morphox.ZombieNerf")
-        {
-
-=======
         public static NerfMod Instance;
 
         public NerfMod(CastleMinerZGame game) : base(game, "ZombieNerf", "com.Morphox.ZombieNerf")
         {
             Instance = this;
->>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
         }
 
         protected override void LoadMain()

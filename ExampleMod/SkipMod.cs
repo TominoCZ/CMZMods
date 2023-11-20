@@ -24,8 +24,8 @@ namespace IntroSkip
                 loading.GetValue<OneShotTimer>("preBlackness").MaxTime = TimeSpan.FromSeconds(0.5);
                 loading.GetValue<OneShotTimer>("fadeIn").MaxTime = TimeSpan.FromSeconds(1);
                 loading.GetValue<OneShotTimer>("display").MaxTime = TimeSpan.FromMinutes(60);
-                //loading.GetValue<OneShotTimer>("fadeOut").MaxTime = TimeSpan.FromSeconds(0.5);
-                //loading.GetValue<OneShotTimer>("postBlackness").MaxTime = TimeSpan.FromSeconds(0.5);
+                loading.GetValue<OneShotTimer>("fadeOut").MaxTime = TimeSpan.FromSeconds(0);
+                loading.GetValue<OneShotTimer>("postBlackness").MaxTime = TimeSpan.FromSeconds(0);
 
                 SkipMod.Instance.Log("Intro skipped!", LogType.Success);
 
@@ -36,12 +36,7 @@ namespace IntroSkip
 
     public class SkipMod : ModBase
     {
-<<<<<<< HEAD
-        public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
-        {
-=======
         public static SkipMod Instance;
->>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
 
         public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
         {
