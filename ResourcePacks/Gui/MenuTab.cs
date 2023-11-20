@@ -27,7 +27,7 @@ using TabControl = DNA.Drawing.UI.Controls.TabControl;
 
 namespace ResourcePacks.Gui
 {
-    public class TexturesTab : TabControl.TabPage
+    public class MenuTab : TabControl.TabPage
     {
         private CastleMinerZGame _game;
         private TextControl _title;
@@ -55,12 +55,12 @@ namespace ResourcePacks.Gui
         private ResourcePack[] _packs = new ResourcePack[0];
         private ResourcePack[] _prevValidPacks = new ResourcePack[0];
 
-        public TexturesTab()
-          : base("Texture Packs")
+        public MenuTab()
+          : base("Resource Packs")
         {
             this._game = CastleMinerZGame.Instance;
             this._controlsFont = this._game._medFont;
-            this._title = new TextControl("Texture Packs", this._controlsFont);
+            this._title = new TextControl("Resource Packs", this._controlsFont);
             this._packName = new TextControl("", this._controlsFont);
             this._packAuthor = new TextControl("", this._controlsFont);
             this._packDesc = new TextControl("", this._controlsFont);
@@ -87,7 +87,7 @@ namespace ResourcePacks.Gui
             this._btnNext.Frame = this._game.ButtonFrame;
             this._btnNext.Pressed += new EventHandler(this._nextButton_Pressed);
             this._btnNext.ButtonColor = Color.Green;
-            this._showDir.Text = "Packs Folder";
+            this._showDir.Text = "Browse";
             this._showDir.Font = this._game._medFont;
             this._showDir.Frame = this._game.ButtonFrame;
             this._showDir.Pressed += new EventHandler(this._openFile_pressed);

@@ -27,7 +27,7 @@ namespace ResourcePacks.Gui
                 {
                     var control = _queue.Dequeue().GetValue<TabControl>("tabControl");
 
-                    control.Tabs.Add(new TexturesTab());
+                    control.Tabs.Add(new MenuTab());
                 }
             }
         }

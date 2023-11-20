@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CEEA746E-090E-44CA-B185-3323F22DAE71}</ProjectGuid>
+    <ProjectGuid>{35D59D07-CF64-4F58-BA71-50AF1645CC4E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntroSkip</RootNamespace>
-    <AssemblyName>IntroSkip</AssemblyName>
+    <RootNamespace>ZombieNerf</RootNamespace>
+    <AssemblyName>ZombieNerf</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SkipMod.cs" />
+    <Compile Include="NerfMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

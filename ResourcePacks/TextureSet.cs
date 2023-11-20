@@ -1,6 +1,7 @@
 ﻿using DNA.Drawing.Imaging.Photoshop;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Modding;
 using System;
 using System.Drawing;

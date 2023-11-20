@@ -5,10 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Modding;
 using ResourcePacks.Gui;
 using ResourcePacks.Properties;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace ResourcePacks.Packs
 {
@@ -21,9 +18,9 @@ namespace ResourcePacks.Packs
         static bool keyDown = false;
         static Queue<string> packsQueue = new Queue<string>();
 
-        public PackMod(Game game) : base(game, "Resource Packs", "com.Morphox.ResourcePacks")
+        public PackMod(CastleMinerZGame game) : base(game, "Resource Packs", "com.Morphox.ResourcePacks")
         {
-            Manager = new PackManager((CastleMinerZGame)Game);
+            Manager = new PackManager();
             GuiManager.AddHandler(_handler);
 
             Settings.Default.Reload();
