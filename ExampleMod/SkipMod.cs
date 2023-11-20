@@ -1,4 +1,5 @@
-﻿using DNA.CastleMinerZ;
+﻿using DNA;
+using DNA.CastleMinerZ;
 using DNA.CastleMinerZ.UI;
 using DNA.Drawing.UI;
 using DNA.Timers;
@@ -24,8 +25,8 @@ namespace IntroSkip
                 loading.GetValue<OneShotTimer>("preBlackness").MaxTime = TimeSpan.FromSeconds(0.5);
                 loading.GetValue<OneShotTimer>("fadeIn").MaxTime = TimeSpan.FromSeconds(1);
                 loading.GetValue<OneShotTimer>("display").MaxTime = TimeSpan.FromMinutes(60);
-                loading.GetValue<OneShotTimer>("fadeOut").MaxTime = TimeSpan.FromSeconds(0);
-                loading.GetValue<OneShotTimer>("postBlackness").MaxTime = TimeSpan.FromSeconds(0);
+                loading.GetValue<OneShotTimer>("fadeOut").MaxTime = TimeSpan.Zero;
+                loading.GetValue<OneShotTimer>("postBlackness").MaxTime = TimeSpan.Zero;
 
                 SkipMod.Instance.Log("Intro skipped!", LogType.Success);
 
@@ -34,16 +35,14 @@ namespace IntroSkip
         }
     }
 
-    public class SkipMod : ModBase
+    public class SkipMod : ModBase<SkipMod, CastleMinerZGame>
     {
-        public static SkipMod Instance;
-
         public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
         {
-            Instance = this;
+
         }
 
-        protected override void LoadPre()
+        public override void LoadPre()
         {
             GuiManager.AddHandler(new MyHandler());
         }

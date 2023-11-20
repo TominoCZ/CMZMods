@@ -9,9 +9,8 @@ using System.Collections.Generic;
 
 namespace ResourcePacks.Packs
 {
-    public class PackMod : ModBase
+    public class PackMod : ModBase<PackMod, CastleMinerZGame>
     {
-        public static PackMod Instance;
         public PackManager Manager { get; private set; }
 
         private MyGuiHandler _handler = new MyGuiHandler();
@@ -21,14 +20,14 @@ namespace ResourcePacks.Packs
 
         public PackMod(CastleMinerZGame game) : base(game, "Resource Packs", "com.Morphox.ResourcePacks")
         {
-            Instance = this;
             Manager = new PackManager();
+
             GuiManager.AddHandler(_handler);
 
             Settings.Default.Reload();
         }
 
-        protected override void LoadMain()
+        public override void LoadMain()
         {
             Manager.Init();
 
@@ -45,7 +44,7 @@ namespace ResourcePacks.Packs
             }
         }
 
-        protected override void Draw(GameTime time)
+        public override void Draw(GameTime time)
         {
             if (Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Delete))
             {
