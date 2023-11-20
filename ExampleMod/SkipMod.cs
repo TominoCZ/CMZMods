@@ -28,7 +28,7 @@ namespace IntroSkip
 
     public class SkipMod : ModBase
     {
-        public SkipMod(Game game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
+        public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
         {
 
         }

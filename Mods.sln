@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourcePacks", "ResourcePa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroSkip", "ExampleMod\IntroSkip.csproj", "{CEEA746E-090E-44CA-B185-3323F22DAE71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZombieNerf", "ZombieNerf\ZombieNerf.csproj", "{35D59D07-CF64-4F58-BA71-50AF1645CC4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CEEA746E-090E-44CA-B185-3323F22DAE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEEA746E-090E-44CA-B185-3323F22DAE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEEA746E-090E-44CA-B185-3323F22DAE71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

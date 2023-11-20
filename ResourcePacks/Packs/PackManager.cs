@@ -29,20 +29,15 @@ namespace ResourcePacks.Packs
         private Texture2D _diffuseMip;
         private BlockTerrain _terrain;
 
-        public CastleMinerZGame Game;
         public ResourcePack Active;
         public Dictionary<string, ResourcePack> Packs = new Dictionary<string, ResourcePack>();
 
         public bool IsLoaded { get; private set; }
 
-        public PackManager(CastleMinerZGame game)
-        {
-            Game = game;
-        }
 
         public void Init()
         {
-            _terrain = Game._terrain;
+            _terrain = ModBase.Instance.Game._terrain;
 
             _diffuse = _terrain.GetValue<Texture2D>("_diffuseAlpha");
             _normal = _terrain.GetValue<Texture2D>("_normalSpec");
