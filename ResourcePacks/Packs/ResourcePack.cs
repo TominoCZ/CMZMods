@@ -41,7 +41,7 @@ namespace ResourcePacks.Packs
             }
             catch (Exception e)
             {
-                ModBase.Instance.Log($"Failed to load {dir}:\n{e}", LogType.Error);
+                PackMod.Instance.Log($"Failed to load {dir}:\n{e}", LogType.Error);
             }
 
             return null;
@@ -56,7 +56,7 @@ namespace ResourcePacks.Packs
             if (!Directory.Exists(dir) || !Directory.Exists(dirTex))
                 return false;
 
-            ModBase.Instance.Log($"Preloading pack: " + name);
+            PackMod.Instance.Log($"Preloading pack: " + name);
 
             var now = DateTime.Now;
 
@@ -68,7 +68,7 @@ namespace ResourcePacks.Packs
 
             pack = new ResourcePack(name, terrain);
 
-            ModBase.Instance.Log($"Preloading pack took {(DateTime.Now - now).TotalSeconds} seconds", LogType.Success);
+            PackMod.Instance.Log($"Preloading pack took {(DateTime.Now - now).TotalSeconds} seconds", LogType.Success);
 
             return true;
         }

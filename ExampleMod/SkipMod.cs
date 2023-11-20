@@ -1,6 +1,7 @@
 ﻿using DNA.CastleMinerZ;
 using DNA.CastleMinerZ.UI;
 using DNA.Drawing.UI;
+using DNA.Timers;
 using Microsoft.Xna.Framework;
 using Modding;
 using System;
@@ -17,9 +18,16 @@ namespace IntroSkip
         {
             if (screen is LoadScreen loading)
             {
-                loading.Finished = true;
+                loading.Finished = true; // This will make the screen disappear right after the game is all loaded
 
-                ModBase.Instance.Log("Intro skipped!", LogType.Success);
+                // This will make the splash fade in and show until the game is fully loaded
+                loading.GetValue<OneShotTimer>("preBlackness").MaxTime = TimeSpan.FromSeconds(0.5);
+                loading.GetValue<OneShotTimer>("fadeIn").MaxTime = TimeSpan.FromSeconds(1);
+                loading.GetValue<OneShotTimer>("display").MaxTime = TimeSpan.FromMinutes(60);
+                //loading.GetValue<OneShotTimer>("fadeOut").MaxTime = TimeSpan.FromSeconds(0.5);
+                //loading.GetValue<OneShotTimer>("postBlackness").MaxTime = TimeSpan.FromSeconds(0.5);
+
+                SkipMod.Instance.Log("Intro skipped!", LogType.Success);
 
                 Dispose(); // We don't need the handler anymore, it will be discarded by the GuiManager
             }
@@ -28,9 +36,16 @@ namespace IntroSkip
 
     public class SkipMod : ModBase
     {
+<<<<<<< HEAD
         public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
         {
+=======
+        public static SkipMod Instance;
+>>>>>>> 85774f48eeecdc1550260a794ebfa139b80eccaa
 
+        public SkipMod(CastleMinerZGame game) : base(game, "IntroSkip", "com.Morphox.IntroSkip")
+        {
+            Instance = this;
         }
 
         protected override void LoadPre()
