@@ -11,6 +11,7 @@ namespace ResourcePacks.Packs
 {
     public class PackMod : ModBase
     {
+        public static PackMod Instance;
         public PackManager Manager { get; private set; }
 
         private MyGuiHandler _handler = new MyGuiHandler();
@@ -20,6 +21,7 @@ namespace ResourcePacks.Packs
 
         public PackMod(CastleMinerZGame game) : base(game, "Resource Packs", "com.Morphox.ResourcePacks")
         {
+            Instance = this;
             Manager = new PackManager();
             GuiManager.AddHandler(_handler);
 

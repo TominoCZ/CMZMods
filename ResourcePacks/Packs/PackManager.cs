@@ -37,7 +37,7 @@ namespace ResourcePacks.Packs
 
         public void Init()
         {
-            _terrain = ModBase.Instance.Game._terrain;
+            _terrain = PackMod.Instance.Game._terrain;
 
             _diffuse = _terrain.GetValue<Texture2D>("_diffuseAlpha");
             _normal = _terrain.GetValue<Texture2D>("_normalSpec");
@@ -68,7 +68,7 @@ namespace ResourcePacks.Packs
             }
             catch (Exception ex)
             {
-                ModBase.Instance.Log(ex.ToString(), LogType.Error);
+                PackMod.Instance.Log(ex.ToString(), LogType.Error);
             }
 
             Active = ResourcePack.Default;
@@ -131,7 +131,7 @@ namespace ResourcePacks.Packs
 
             //Terrain.UseSimpleShader = name != "Default";
 
-            ModBase.Instance.Log($"\"{pack.Name}\" Loaded");
+            PackMod.Instance.Log($"\"{pack.Name}\" Loaded");
 
             return true;
         }

@@ -120,7 +120,7 @@ namespace ResourcePacks.Gui
             this._pageIndex = 1;
             //ScreenGroup group = this._game.CurrentNetworkSession == null ? this._game.FrontEnd._uiGroup : this._game.GameScreen._uiGroup;
             var packs = new List<ResourcePack>();
-            foreach (var pack in ((PackMod)ModBase.Instance).Manager.Packs.Values)
+            foreach (var pack in PackMod.Instance.Manager.Packs.Values)
                 packs.Add(pack);
             packs.OrderBy(p => p.Name);
 
@@ -200,7 +200,7 @@ namespace ResourcePacks.Gui
                 }
                 catch (Exception e)
                 {
-                    ModBase.Instance.Log("ERROR:\n" + e.ToString(), LogType.Error);
+                    PackMod.Instance.Log("ERROR:\n" + e.ToString(), LogType.Error);
                 }
             }
             if (this._screenLast != DNA.Drawing.UI.Screen.Adjuster.ScreenRect)
@@ -264,7 +264,7 @@ namespace ResourcePacks.Gui
             this._packButtons = new FrameButtonControl[length];
             this._packNames = new TextControl[length];
             this._checkboxes = new CheckBoxControl[length];
-            int num = Array.IndexOf(_packs, ((PackMod)ModBase.Instance).Manager.Active);
+            int num = Array.IndexOf(_packs, PackMod.Instance.Manager.Active);
             for (int index2 = 0; index2 < _packs.Length; index2++)
             {
                 ResourcePack pack = _packs[index2];
@@ -439,7 +439,7 @@ namespace ResourcePacks.Gui
 
             //uiGroup.ShowPCDialogScreen(num == current ? alreadySelected : confirmTexturePack, (ThreadStart)(() =>
             //{
-            if (((PackMod)ModBase.Instance).Manager.Set(pack))
+            if (PackMod.Instance.Manager.Set(pack))
             {
                 Settings.Default.ResourcePack = pack.Name;
                 Settings.Default.Save();
@@ -465,7 +465,7 @@ namespace ResourcePacks.Gui
 
         private void UpdateInfo()
         {
-            int current = Array.IndexOf(_packs, ((PackMod)ModBase.Instance).Manager.Active);
+            int current = Array.IndexOf(_packs, PackMod.Instance.Manager.Active);
 
             for (int i = 0; i < _checkboxes.Length && i < _packs.Length; i++)
             {
