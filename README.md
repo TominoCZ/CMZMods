@@ -7,7 +7,11 @@ This is a CastleMinerZ Mod Loader I built using the [Harmony](https://github.com
 - To install the **mods**, create a ``@mods`` folder in the game's directory (it creates itself) and paste your mod DLL inside (along with any library DLLs your mod is using, the loader will recognize mod files).
 
 ## Mods
-I've included some example mods I made:
+I've included some example mods I made or ported over:
+
+### Laser Gun Crash Fix (ported)
+- This mod fixes the random crashes when shooting laser guns
+- Port of the original .EXE mod made by [pending..]
 
 ### IntroSkip (ExampleMod)
 - This mod greatly reduces the splash screen length (the loader has a custom splash image)
@@ -19,3 +23,4 @@ I've included some example mods I made:
 - To install the Resource Pack mod, copy __both__ ``ResourcePacks.dll`` and ``FastBitmapLib.dll`` into the ``@mods`` folder.
 - To install resource packs, create a ``@resourcepacks`` folder (it creates itself) in the game's directory and paste in the example packs from ``@PACKS``.
 - At the moment you can switch between packs by pressing DELETE while playing but there is also a **Resource Packs** tab in Options.
+- Partially ported over the GUI of the original .EXE mod made by [pending..]

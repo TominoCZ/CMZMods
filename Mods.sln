@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroSkip", "ExampleMod\Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZombieNerf", "ZombieNerf\ZombieNerf.csproj", "{35D59D07-CF64-4F58-BA71-50AF1645CC4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockEvents", "BlockEvents\BlockEvents.csproj", "{41200048-53B9-404D-9FF0-91CD21BA9EBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGunFix", "LaserGunFix\LaserGunFix.csproj", "{F086B167-D1D1-4934-8086-72CFC2E797AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35D59D07-CF64-4F58-BA71-50AF1645CC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41200048-53B9-404D-9FF0-91CD21BA9EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41200048-53B9-404D-9FF0-91CD21BA9EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41200048-53B9-404D-9FF0-91CD21BA9EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41200048-53B9-404D-9FF0-91CD21BA9EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F086B167-D1D1-4934-8086-72CFC2E797AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F086B167-D1D1-4934-8086-72CFC2E797AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F086B167-D1D1-4934-8086-72CFC2E797AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F086B167-D1D1-4934-8086-72CFC2E797AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
