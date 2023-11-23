@@ -11,7 +11,7 @@ I've included some example mods I made or ported over:
 
 ### Laser Gun Crash Fix (ported)
 - This mod fixes the random crashes when shooting laser guns
-- Port of the original .EXE mod made by [pending..]
+- Port of the original .EXE mod made by ZombieToad
 
 ### IntroSkip (ExampleMod)
 - This mod greatly reduces the splash screen length (the loader has a custom splash image)
