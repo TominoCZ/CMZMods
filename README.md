@@ -23,4 +23,4 @@ I've included some example mods I made or ported over:
 - To install the Resource Pack mod, copy __both__ ``ResourcePacks.dll`` and ``FastBitmapLib.dll`` into the ``@mods`` folder.
 - To install resource packs, create a ``@resourcepacks`` folder (it creates itself) in the game's directory and paste in the example packs from ``@PACKS``.
 - At the moment you can switch between packs by pressing DELETE while playing but there is also a **Resource Packs** tab in Options.
-- Partially ported over the GUI of the original .EXE mod made by [pending..]
+- Includes a partially ported GUI of a Texture Pack .EXE mod made by Clown & Zennara
