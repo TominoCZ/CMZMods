@@ -31,9 +31,10 @@ namespace BlockEvents
         }*/
     }
 
+    [MMLMod("BlockEvents", "com.Morphox.BlockEvents")]
     public class BlockEventsMod : ModBase<BlockEventsMod, CastleMinerZGame>
     {
-        public BlockEventsMod(CastleMinerZGame game) : base(game, "BlockEvents", "com.Morphox.BlockEvents")
+        public BlockEventsMod(CastleMinerZGame game) : base(game)
         {
 
         }

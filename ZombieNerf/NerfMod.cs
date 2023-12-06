@@ -67,9 +67,10 @@ namespace NerfMod
         }*/
     }
 
+    [MMLMod("No Zombie Slowdown", "com.Morphox.ZombieNerf")] 
     public class NerfMod : ModBase<NerfMod, CastleMinerZGame>
     {
-        public NerfMod(CastleMinerZGame game) : base(game, "ZombieNerf", "com.Morphox.ZombieNerf")
+        public NerfMod(CastleMinerZGame game) : base(game)
         {
 
         }

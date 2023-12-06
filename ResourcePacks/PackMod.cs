@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 namespace ResourcePacks.Packs
 {
+    [MMLMod("Resource Packs", "com.Morphox.ResourcePacks")]
     public class PackMod : ModBase<PackMod, CastleMinerZGame>
     {
         public PackManager Manager { get; private set; }
@@ -18,7 +19,7 @@ namespace ResourcePacks.Packs
         static bool keyDown = false;
         static Queue<string> packsQueue = new Queue<string>();
 
-        public PackMod(CastleMinerZGame game) : base(game, "Resource Packs", "com.Morphox.ResourcePacks")
+        public PackMod(CastleMinerZGame game) : base(game)
         {
             Manager = new PackManager();
 
