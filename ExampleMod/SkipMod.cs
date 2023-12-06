@@ -35,7 +35,7 @@ namespace IntroSkip
         }
     }
 
-    [MMLMod("Intro Skip", "com.Morphox.IntroSkip")]
+    [MMLMod("Intro Skip", "com.Morphox.IntroSkip", "Morphox")]
     public class SkipMod : ModBase<SkipMod, CastleMinerZGame>
     {
         public SkipMod(CastleMinerZGame game) : base(game)

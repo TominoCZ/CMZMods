@@ -194,7 +194,7 @@ namespace LaserGunFix
         }
     }
 
-    [MMLMod("Laser Gun Crash Fix", "com.Morphox.LaserGunFix")]
+    [MMLMod("Laser Gun Crash Fix", "com.Morphox.LaserGunFix", "Morphox")]
     public class LaserGunFix : ModBase<LaserGunFix, CastleMinerZGame>
     {
         public LaserGunFix(CastleMinerZGame game) : base(game)

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace ResourcePacks.Packs
 {
-    [MMLMod("Resource Packs", "com.Morphox.ResourcePacks")]
+    [MMLMod("Resource Packs", "com.Morphox.ResourcePacks", "Morphox")]
     public class PackMod : ModBase<PackMod, CastleMinerZGame>
     {
         public PackManager Manager { get; private set; }
